@@ -1,0 +1,67 @@
+<div class="container">
+    <h1>{{ vueloId }}</h1>
+    <div class="module-header">
+        <div class="left">
+            <h3>{{ formTitulo }}</h3>
+        </div>
+        <div class="right">
+            <button mat-raised-button class="custom-button" (click)="guardarVuelo()">Guardar</button>
+        </div>
+    </div>
+    <hr />
+    <div class="form-container">
+        <form class="form" [formGroup]="vueloForm">
+            <input type="hidden" name="idvuelo" formControlName="idvuelo">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Número de Vuelo</mat-label>
+                <input matInput name="numerovuelo" formControlName="numerovuelo" />
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Aerolinea</mat-label>
+                <mat-select formControlName="idaerolinea">
+                @for (aerolinea of aerolineas; track aerolinea) {
+                <mat-option [value]="aerolinea.idaerolinea" >{{aerolinea.nomaerolinea}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Avión</mat-label>
+                <mat-select formControlName="idavion">
+                @for (avion of aviones; track avion) {
+                <mat-option [value]="avion.idavion" >{{avion.modelo}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Origen</mat-label>
+                <mat-select formControlName="id_aeropuerto_origen">
+                @for (aeropuerto_origen of aeropuertos; track aeropuerto_origen) {
+                <mat-option [value]="aeropuerto_origen.idaeropuerto" >{{aeropuerto_origen.nomaeropuerto}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Destino</mat-label>
+                <mat-select formControlName="id_aeropuerto_destino">
+                @for (aeropuerto_destino of aeropuertos; track aeropuerto_destino) {
+                <mat-option [value]="aeropuerto_destino.idaeropuerto" >{{aeropuerto_destino.nomaeropuerto}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Fecha de salida</mat-label>
+                <input matInput name="fechasalida" formControlName="fechasalida" type="datetime-local"/>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Fecha de llegada</mat-label>
+                <input matInput name="fechallegada" formControlName="fechallegada" type="datetime-local"/>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Duración</mat-label>
+                <input matInput name="duracion" formControlName="duracion" />
+            </mat-form-field>
+        </form>
+    </div>
+</div>

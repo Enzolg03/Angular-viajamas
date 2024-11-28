@@ -1,0 +1,47 @@
+<div class="container">
+    <h1>{{ aeropuertoId }}</h1>
+    <div class="module-header">
+        <div class="left">
+            <h3>{{ formTitulo }}</h3>
+        </div>
+        <div class="right">
+            <button mat-raised-button class="custom-button" (click)="guardarAeropuerto()">Guardar</button>
+        </div>
+    </div>
+    <hr />
+    <div class="form-container">
+        <form class="form" [formGroup]="aeropuertoForm">
+            <input type="hidden" name="idaeropuerto" formControlName="idaeropuerto">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Nombre</mat-label>
+                <input matInput name="nomaeropuerto" formControlName="nomaeropuerto" />
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Ciudades</mat-label>
+                <mat-select formControlName="idciudad">
+                @for (ciudad of ciudades; track ciudad) {
+                <mat-option [value]="ciudad.idciudad" >{{ciudad.nomciudad}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field>
+                <mat-label>Jurisdicción</mat-label>
+                <mat-select formControlName="idjurisdiccion">
+                @for (jurisdiccion of jurisdicciones; track jurisdiccion) {
+                <mat-option [value]="jurisdiccion.idjurisdiccion" >{{jurisdiccion.nomjurisdiccion}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>País</mat-label>
+                <mat-select formControlName="idpais">
+                @for (pais of paises; track pais) {
+                <mat-option [value]="pais.idpais" >{{pais.nompais}}</mat-option>
+                }
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
